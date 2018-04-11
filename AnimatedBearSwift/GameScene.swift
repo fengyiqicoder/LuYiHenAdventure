@@ -55,6 +55,7 @@ class GameScene: SKScene {
     backgroundColor = .blue
     buildMan()
     loadBackground()
+    print("something")
   }
   //MARK: - loadCode
   
