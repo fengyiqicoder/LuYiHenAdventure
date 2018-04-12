@@ -1,35 +1,4 @@
-/**
- * GameScene.swift
- * AnimatedBearSwift
- *
- * Copyright (c) 2017 Razeware LLC
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
- * distribute, sublicense, create a derivative work, and/or sell copies of the
- * Software in any work that is designed, intended, or marketed for pedagogical or
- * instructional purposes related to programming, coding, application development,
- * or information technology.  Permission for such use, copying, modification,
- * merger, publication, distribution, sublicensing, creation of derivative works,
- * or sale is expressly withheld.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
+
 
 import SpriteKit
 
@@ -43,21 +12,39 @@ class GameScene: SKScene {
   private var man = SKSpriteNode()
   private var background = SKSpriteNode()
   private var manWalkingFrames: [SKTexture] = []
+  private var kickingTextures:[SKTexture] = []
+  private var punchingTextures:[SKTexture] = []
   
   //边缘
   lazy var rightMaxDistance:CGFloat =  { [unowned self] in return self.size.width  }()
   var leftMaxDistance:CGFloat = 0
   
-  //states
+  
+  //MARK:states
   var runingDirectionToRight:Bool?
+  var isDoingAction:Bool {
+    if ((man.action(forKey: "kick") != nil)||(man.action(forKey: "punch") != nil)||(man.action(forKey: "jump") != nil)){
+      return true
+    }
+    return false
+  }
+  
+  var manFacingRight:Bool{
+    if man.xScale == -1 {
+      return false
+    }else{
+      return true
+    }
+  }
+  
+  //MARK: - loadCode
+
   
   override func didMove(to view: SKView) {
     backgroundColor = .blue
     buildMan()
     loadBackground()
-    print("something")
   }
-  //MARK: - loadCode
   
   func loadBackground() {
     //getBackgroundImageName
@@ -70,15 +57,10 @@ class GameScene: SKScene {
   }
   
   func buildMan() {
-    let bearAnimatedAtlas = SKTextureAtlas(named: "manTexture")
-    var walkFrames: [SKTexture] = []
-    
-    let numImages = bearAnimatedAtlas.textureNames.count
-    for i in 1...numImages {
-      let bearTextureName = "walk\(i)"
-      walkFrames.append(bearAnimatedAtlas.textureNamed(bearTextureName))
-    }
-    manWalkingFrames = walkFrames
+    //load all texture
+    loadTexture(folderName: "manTexture", imageName: "walk", textureArray: &manWalkingFrames)
+    loadTexture(folderName: "kickAction", imageName: "kick", textureArray: &kickingTextures)
+    loadTexture(folderName: "punchAction", imageName: "punch", textureArray: &punchingTextures)
     
     let firstFrameTexture = manWalkingFrames[0]
     man = SKSpriteNode(texture: firstFrameTexture)
@@ -86,11 +68,25 @@ class GameScene: SKScene {
     man.zPosition = 2.0
     
     addChild(man)
+    
+    
+  }
+  //载入材质
+  func loadTexture(folderName:String,imageName:String, textureArray:inout [SKTexture]){
+    //load moving texture
+    let bearAnimatedAtlas = SKTextureAtlas(named:folderName)
+    var walkFrames: [SKTexture] = []
+    
+    let numImages = bearAnimatedAtlas.textureNames.count
+    for i in 1...numImages {
+      let bearTextureName = "\(imageName)\(i)"
+      walkFrames.append(bearAnimatedAtlas.textureNamed(bearTextureName))
+    }
+    textureArray = walkFrames
   }
   
   func updateBackground(level:Int) -> Bool {
     let maxLevel = ScenesData.resource.count-1
-    print("maxLevel \(maxLevel)")
     if 0 <= level&&level <= maxLevel {//在范围之内
       self.sceneNumber = level
       return true
@@ -106,17 +102,50 @@ class GameScene: SKScene {
     animateMan()
   }
   
+  func attack(punch:Bool)  {
+    //正在执行动作
+    print(isDoingAction)
+    if isDoingAction {return}
+    //animation
+    man.removeAllActions()
+    if punch{
+      punchAnimation()
+    }else{
+      kickAnimation()
+    }
+    //物理判断（击打声音）
+    
+    
+  }
+
+  
+  func kickAnimation() {
+    man.run(SKAction.animate(with: kickingTextures,
+                             timePerFrame: 0.06,
+                             resize: true,
+                             restore: true),
+            withKey:"kick")
+  }
+  
+  func punchAnimation() {
+    man.run(SKAction.animate(with: punchingTextures,
+                             timePerFrame: 0.08,
+                             resize: true,
+                             restore: true),
+            withKey:"punch")
+  }
+  
   func animateMan() {
     man.run(SKAction.repeatForever(
       SKAction.animate(with: manWalkingFrames,
                        timePerFrame: 0.1,
                        resize: false,
-                       restore: false)),
-             withKey:"walkingMan")
+                       restore: true)),
+             withKey:"walk")
+    print("man size \(man.size)")
   }
   
   func updateManPosition()  {
-    
     let position = man.position.x
     //边缘判断
     if position < leftMaxDistance{
