@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		13282FF0207B5F880033EBFA /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13282FEF207B5F880033EBFA /* GameData.swift */; };
 		13282FFA207B8FC60033EBFA /* manTexture.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13282FF9207B8FC60033EBFA /* manTexture.atlas */; };
+		1345BC68208078BA00B3E62E /* cuteMonsterTexture.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1345BC67208078BA00B3E62E /* cuteMonsterTexture.atlas */; };
 		13C971EE207F88F900ACBAA3 /* punchAction.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13C971ED207F88F900ACBAA3 /* punchAction.atlas */; };
 		13C971F4207F8D0E00ACBAA3 /* kickAction.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13C971F3207F8D0E00ACBAA3 /* kickAction.atlas */; };
 		171881501EB13FA300FC3077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1718814F1EB13FA300FC3077 /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		13282FEF207B5F880033EBFA /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		13282FF9207B8FC60033EBFA /* manTexture.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = manTexture.atlas; sourceTree = "<group>"; };
+		1345BC67208078BA00B3E62E /* cuteMonsterTexture.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = cuteMonsterTexture.atlas; sourceTree = "<group>"; };
 		13C971ED207F88F900ACBAA3 /* punchAction.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = punchAction.atlas; sourceTree = "<group>"; };
 		13C971F3207F8D0E00ACBAA3 /* kickAction.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = kickAction.atlas; sourceTree = "<group>"; };
 		1718814C1EB13FA300FC3077 /* AnimatedBearSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedBearSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +68,7 @@
 		1718814E1EB13FA300FC3077 /* AnimatedBearSwift */ = {
 			isa = PBXGroup;
 			children = (
+				1345BC67208078BA00B3E62E /* cuteMonsterTexture.atlas */,
 				13C971F3207F8D0E00ACBAA3 /* kickAction.atlas */,
 				13C971ED207F88F900ACBAA3 /* punchAction.atlas */,
 				13282FF9207B8FC60033EBFA /* manTexture.atlas */,
@@ -145,6 +148,7 @@
 				13282FFA207B8FC60033EBFA /* manTexture.atlas in Resources */,
 				13C971F4207F8D0E00ACBAA3 /* kickAction.atlas in Resources */,
 				13C971EE207F88F900ACBAA3 /* punchAction.atlas in Resources */,
+				1345BC68208078BA00B3E62E /* cuteMonsterTexture.atlas in Resources */,
 				1718815B1EB13FA300FC3077 /* Main.storyboard in Resources */,
 				1718815D1EB13FA300FC3077 /* Assets.xcassets in Resources */,
 				171881601EB13FA300FC3077 /* LaunchScreen.storyboard in Resources */,

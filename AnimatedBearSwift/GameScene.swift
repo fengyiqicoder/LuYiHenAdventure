@@ -1,4 +1,5 @@
 
+//Bug 记录
 
 import SpriteKit
 
@@ -14,6 +15,10 @@ class GameScene: SKScene {
   private var manWalkingFrames: [SKTexture] = []
   private var kickingTextures:[SKTexture] = []
   private var punchingTextures:[SKTexture] = []
+  
+  //testing
+  private var cuteMonster = SKSpriteNode()
+  private var cuteMonsterTextures:[SKTexture] = []
   
   //边缘
   lazy var rightMaxDistance:CGFloat =  { [unowned self] in return self.size.width  }()
@@ -43,6 +48,7 @@ class GameScene: SKScene {
   override func didMove(to view: SKView) {
     backgroundColor = .blue
     buildMan()
+//    buildMonster()
     loadBackground()
   }
   
@@ -64,12 +70,28 @@ class GameScene: SKScene {
     
     let firstFrameTexture = manWalkingFrames[0]
     man = SKSpriteNode(texture: firstFrameTexture)
-    man.position = CGPoint(x: frame.midX-100, y: 320)
+    man.position = CGPoint(x: GameSetting.manStartPointX,
+                           y: GameSetting.manStartPointY)
+//    man.size = GameSetting.manSize
     man.zPosition = 2.0
     
     addChild(man)
     
     
+  }
+  //testing
+  func buildMonster() {
+    loadTexture(folderName: "cuteMonsterTexture", imageName: "monster", textureArray: &cuteMonsterTextures)
+    
+    let firstFrameTexture = cuteMonsterTextures[0]
+    cuteMonster = SKSpriteNode(texture: firstFrameTexture)
+    cuteMonster.position = CGPoint(x: frame.midX+100, y: 240)
+    cuteMonster.zPosition = 3.0
+    
+    addChild(cuteMonster)
+    
+    cuteMonster.run(SKAction.repeatForever(SKAction.animate(with: cuteMonsterTextures, timePerFrame: 0.14, resize: true, restore: false)))
+ 
   }
   //载入材质
   func loadTexture(folderName:String,imageName:String, textureArray:inout [SKTexture]){
@@ -96,7 +118,8 @@ class GameScene: SKScene {
   
   //MARK: - man's move
   func moveMan(toRight:Bool) {
-    
+    print("doing Action \(isDoingAction)")
+    if isDoingAction {return}
     runingDirectionToRight = toRight
     man.xScale = toRight ? 1 : -1
     animateMan()
@@ -104,10 +127,10 @@ class GameScene: SKScene {
   
   func attack(punch:Bool)  {
     //正在执行动作
-    print(isDoingAction)
+//    print()
     if isDoingAction {return}
     //animation
-    man.removeAllActions()
+    cancelMove()
     if punch{
       punchAnimation()
     }else{
@@ -138,14 +161,15 @@ class GameScene: SKScene {
   func animateMan() {
     man.run(SKAction.repeatForever(
       SKAction.animate(with: manWalkingFrames,
-                       timePerFrame: 0.1,
+                       timePerFrame: 0.12,
                        resize: false,
-                       restore: true)),
+                       restore: false)),
              withKey:"walk")
     print("man size \(man.size)")
   }
   
   func updateManPosition()  {
+    if isDoingAction {return}
     let position = man.position.x
     //边缘判断
     if position < leftMaxDistance{
@@ -183,6 +207,12 @@ class GameScene: SKScene {
       }else{
         man.position.x -= GameSetting.manRuningspeed
       }
+    }
+  }
+  
+  func stopMoving() {
+    if !isDoingAction {
+      cancelMove()
     }
   }
   

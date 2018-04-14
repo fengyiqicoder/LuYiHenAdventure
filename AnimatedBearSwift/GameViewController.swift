@@ -30,7 +30,7 @@ class GameViewController: UIViewController {
   
   @IBAction func StopMan(_ sender: UIButton) {
 //    print("stop")
-    scene.cancelMove()
+    scene.stopMoving()
   }
   
   @IBAction func attack(_ sender:UIButton){

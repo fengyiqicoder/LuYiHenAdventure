@@ -30,8 +30,10 @@ struct ScenesData {
 }
 
 struct GameSetting {
-  static let manRuningspeed:CGFloat = 15
-  static let runningAnimateSpeed:TimeInterval = 0.1
-  static let manSize = CGSize(width: 171, height: 349)
+  static let screenSize = UIScreen.main.bounds.size
+  static let manRuningspeed:CGFloat = GameSetting.screenSize.width*0.012
+  static let runningAnimateSpeed:TimeInterval = 0.08
+  static let manStartPointX:CGFloat = GameSetting.screenSize.width*0.3
+  static let manStartPointY:CGFloat = GameSetting.screenSize.height*0.4
 }
 
