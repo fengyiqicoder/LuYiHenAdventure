@@ -60,6 +60,9 @@
                                     <constraint firstAttribute="width" secondItem="c3F-93-7CG" secondAttribute="height" multiplier="1:1" id="q2n-yZ-SVk"/>
                                 </constraints>
                                 <state key="normal" image="jump"/>
+                                <connections>
+                                    <action selector="jump" destination="BV1-FR-VrT" eventType="touchUpInside" id="pWd-O7-UNE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tx7-fx-m6a">
                                 <rect key="frame" x="748" y="676" width="92" height="92"/>

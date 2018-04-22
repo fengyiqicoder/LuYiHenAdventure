@@ -41,6 +41,10 @@ class GameViewController: UIViewController {
     }
   }
   
+  @IBAction func jump(){
+    scene.jump()
+  }
+  
   
   override var prefersStatusBarHidden: Bool {
     return true

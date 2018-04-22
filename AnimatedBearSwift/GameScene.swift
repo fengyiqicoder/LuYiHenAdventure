@@ -27,8 +27,17 @@ class GameScene: SKScene {
   
   //MARK:states
   var runingDirectionToRight:Bool?
+  var isJumping:Bool{
+    if ((man.physicsBody!.velocity.dy != 0.0))
+    {
+      return true
+    }
+    return false
+  }
+  
   var isDoingAction:Bool {
-    if ((man.action(forKey: "kick") != nil)||(man.action(forKey: "punch") != nil)||(man.action(forKey: "jump") != nil)){
+    if ((man.action(forKey: "kick") != nil)||(man.action(forKey: "punch") != nil))
+    {
       return true
     }
     return false
@@ -47,6 +56,11 @@ class GameScene: SKScene {
   
   override func didMove(to view: SKView) {
     backgroundColor = .blue
+    physicsBody = SKPhysicsBody(edgeFrom:CGPoint(x:-2000,y:440),to:CGPoint(x:2000,y:440))
+    self.physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
+    print(frame)
+//    buildGravity()
+//    buildGround()
     buildMan()
 //    buildMonster()
     loadBackground()
@@ -74,10 +88,12 @@ class GameScene: SKScene {
                            y: GameSetting.manStartPointY)
 //    man.size = GameSetting.manSize
     man.zPosition = 2.0
-    
+    //创建物理属性
+    man.physicsBody = SKPhysicsBody(rectangleOf: man.size, center: man.position)
+    man.physicsBody!.affectedByGravity = true
+    man.physicsBody!.allowsRotation = false
     addChild(man)
-    
-    
+  
   }
   //testing
   func buildMonster() {
@@ -93,6 +109,25 @@ class GameScene: SKScene {
     cuteMonster.run(SKAction.repeatForever(SKAction.animate(with: cuteMonsterTextures, timePerFrame: 0.14, resize: true, restore: false)))
  
   }
+  
+//  func buildGravity()  {
+//    let gravity = SKFieldNode.linearGravityField(withVector:float3(0,-9.8,0))
+//    gravity.region = SKRegion(size: CGSize(width: 300, height: 300))
+//    gravity.isEnabled = true
+//    gravity.position = CGPoint(x: frame.midX, y: frame.midY)
+//    addChild(gravity)
+//  }
+//
+//  func buildGround() {
+//    let ground = SKSpriteNode(color: UIColor.black, size: CGSize(width:frame.width,height:30))
+//    ground.position = CGPoint(x:frame.minX,y:50)
+//    ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size, center: ground.position)
+//    ground.zPosition = 4.0
+//    ground.physicsBody!.affectedByGravity = false
+//    ground.physicsBody!.allowsRotation = false
+//    addChild(ground)
+//  }
+  
   //载入材质
   func loadTexture(folderName:String,imageName:String, textureArray:inout [SKTexture]){
     //load moving texture
@@ -125,10 +160,14 @@ class GameScene: SKScene {
     animateMan()
   }
   
+  func jump() {
+    if isDoingAction||isJumping {return}
+    man.physicsBody!.applyImpulse(CGVector(dx: 0, dy: GameSetting.jumpHeight))
+  }
+  
   func attack(punch:Bool)  {
     //正在执行动作
-//    print()
-    if isDoingAction {return}
+    if isDoingAction||isJumping {return}
     //animation
     cancelMove()
     if punch{
@@ -137,8 +176,6 @@ class GameScene: SKScene {
       kickAnimation()
     }
     //物理判断（击打声音）
-    
-    
   }
 
   
@@ -246,6 +283,7 @@ class GameScene: SKScene {
   
   override func update(_ currentTime: TimeInterval) {
     updateManPosition()
+    print(man.physicsBody!.velocity)
   }
   
 }

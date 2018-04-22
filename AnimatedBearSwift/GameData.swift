@@ -33,7 +33,9 @@ struct GameSetting {
   static let screenSize = UIScreen.main.bounds.size
   static let manRuningspeed:CGFloat = GameSetting.screenSize.width*0.012
   static let runningAnimateSpeed:TimeInterval = 0.08
-  static let manStartPointX:CGFloat = GameSetting.screenSize.width*0.3
+  static let manStartPointX:CGFloat =
+    GameSetting.screenSize.width*0.3
   static let manStartPointY:CGFloat = GameSetting.screenSize.height*0.4
+  static let jumpHeight:CGFloat = 1900
 }
 
