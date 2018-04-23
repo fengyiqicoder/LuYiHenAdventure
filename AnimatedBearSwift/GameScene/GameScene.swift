@@ -110,24 +110,6 @@ class GameScene: SKScene {
  
   }
   
-//  func buildGravity()  {
-//    let gravity = SKFieldNode.linearGravityField(withVector:float3(0,-9.8,0))
-//    gravity.region = SKRegion(size: CGSize(width: 300, height: 300))
-//    gravity.isEnabled = true
-//    gravity.position = CGPoint(x: frame.midX, y: frame.midY)
-//    addChild(gravity)
-//  }
-//
-//  func buildGround() {
-//    let ground = SKSpriteNode(color: UIColor.black, size: CGSize(width:frame.width,height:30))
-//    ground.position = CGPoint(x:frame.minX,y:50)
-//    ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size, center: ground.position)
-//    ground.zPosition = 4.0
-//    ground.physicsBody!.affectedByGravity = false
-//    ground.physicsBody!.allowsRotation = false
-//    addChild(ground)
-//  }
-  
   //载入材质
   func loadTexture(folderName:String,imageName:String, textureArray:inout [SKTexture]){
     //load moving texture
@@ -266,24 +248,10 @@ class GameScene: SKScene {
   
   // MARK: - Handle touches
   
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//    if event?.allTouches?.count == 1 {
-//      let location = touches.first!.location(in: self)
-//      if location.x > frame.midX {
-//        moveMan(toRight: true)
-//      } else {
-//        moveMan(toRight: false)
-//      }
-//    }
-  }
-  
-  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//    cancelMove()
-  }
   
   override func update(_ currentTime: TimeInterval) {
     updateManPosition()
-    print(man.physicsBody!.velocity)
+//    print(man.physicsBody!.velocity)
   }
   
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="bloodBar" customModule="AnimatedBearSwift" customModuleProvider="target">
+            <connections>
+                <outlet property="bloodBarView" destination="XXi-OV-Vts" id="ViS-Yf-sys"/>
+                <outlet property="bloodBarWeight" destination="CfW-we-jfF" id="z88-0J-Zzx"/>
+                <outlet property="fullBloodBarView" destination="gP3-6g-LTd" id="DRY-bn-3mh"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="33"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AqF-WM-dI5">
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="11"/>
+                    <color key="backgroundColor" red="0.69257551431655884" green="0.7451203465461731" blue="0.75781244039535522" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfI-2m-QM2">
+                    <rect key="frame" x="0.0" y="22" width="400" height="11"/>
+                    <color key="backgroundColor" red="0.70435363054275513" green="0.75695997476577759" blue="0.76550048589706421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="11" id="SDA-XY-5aB"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gP3-6g-LTd">
+                    <rect key="frame" x="18" y="11" width="364" height="11"/>
+                    <color key="backgroundColor" red="0.16761267190000001" green="0.19520068169999999" blue="0.24505814910000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XXi-OV-Vts">
+                    <rect key="frame" x="18" y="11" width="364" height="11"/>
+                    <color key="backgroundColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VfI-2m-QM2" secondAttribute="trailing" id="0Sk-3e-MKj"/>
+                <constraint firstItem="gP3-6g-LTd" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.91" id="4t2-HK-YuG"/>
+                <constraint firstItem="XXi-OV-Vts" firstAttribute="top" secondItem="gP3-6g-LTd" secondAttribute="top" id="6vF-zL-L1B"/>
+                <constraint firstItem="XXi-OV-Vts" firstAttribute="width" secondItem="gP3-6g-LTd" secondAttribute="width" id="CfW-we-jfF"/>
+                <constraint firstItem="XXi-OV-Vts" firstAttribute="leading" secondItem="gP3-6g-LTd" secondAttribute="leading" id="FCf-Mj-Nfm"/>
+                <constraint firstItem="VfI-2m-QM2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="HyW-zv-uF0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AqF-WM-dI5" secondAttribute="trailing" id="LHS-bl-02m"/>
+                <constraint firstItem="XXi-OV-Vts" firstAttribute="bottom" secondItem="gP3-6g-LTd" secondAttribute="bottom" id="OfT-Tm-MHC"/>
+                <constraint firstItem="gP3-6g-LTd" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="WTf-xq-UJW"/>
+                <constraint firstItem="gP3-6g-LTd" firstAttribute="top" secondItem="AqF-WM-dI5" secondAttribute="bottom" id="aZF-qv-EEf"/>
+                <constraint firstItem="AqF-WM-dI5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="b4g-DD-Lhg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VfI-2m-QM2" secondAttribute="bottom" id="eVk-GY-kgg"/>
+                <constraint firstItem="VfI-2m-QM2" firstAttribute="top" secondItem="gP3-6g-LTd" secondAttribute="bottom" id="fF8-5O-IOt"/>
+                <constraint firstItem="AqF-WM-dI5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="i3C-LO-BX1"/>
+                <constraint firstItem="AqF-WM-dI5" firstAttribute="height" secondItem="VfI-2m-QM2" secondAttribute="height" id="xRV-BX-OIM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-129" y="-45.5"/>
+        </view>
+    </objects>
+</document>

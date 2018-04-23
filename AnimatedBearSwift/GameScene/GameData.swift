@@ -37,5 +37,8 @@ struct GameSetting {
     GameSetting.screenSize.width*0.3
   static let manStartPointY:CGFloat = GameSetting.screenSize.height*0.4
   static let jumpHeight:CGFloat = 1900
+  static let beingHitJumpDistance:CGFloat = 300
+  static let beingHitJumpHeight:CGFloat = 900
+
 }
 

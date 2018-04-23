@@ -6,6 +6,8 @@ var scene:GameScene!
 
 class GameViewController: UIViewController {
   
+  @IBOutlet weak var bloodBar: bloodBar!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     if let view = view as? SKView {
@@ -16,6 +18,7 @@ class GameViewController: UIViewController {
       view.showsFPS = true
       view.showsNodeCount = true
       view.presentScene(scene)
+      bloodBar.blood = 78
     }
   }
   

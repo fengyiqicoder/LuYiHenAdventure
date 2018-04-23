@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		13282FF0207B5F880033EBFA /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13282FEF207B5F880033EBFA /* GameData.swift */; };
 		13282FFA207B8FC60033EBFA /* manTexture.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13282FF9207B8FC60033EBFA /* manTexture.atlas */; };
+		133A8C45208E17C500750D41 /* MonsterSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133A8C44208E17C500750D41 /* MonsterSpecies.swift */; };
+		133A8C47208E1A5500750D41 /* Man.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133A8C46208E1A5500750D41 /* Man.swift */; };
+		133A8C4B208E1D3200750D41 /* bloodBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133A8C4A208E1D3200750D41 /* bloodBar.xib */; };
+		133A8C4D208E1D4E00750D41 /* bloodBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133A8C4C208E1D4E00750D41 /* bloodBar.swift */; };
 		1345BC68208078BA00B3E62E /* cuteMonsterTexture.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1345BC67208078BA00B3E62E /* cuteMonsterTexture.atlas */; };
 		13C971EE207F88F900ACBAA3 /* punchAction.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13C971ED207F88F900ACBAA3 /* punchAction.atlas */; };
 		13C971F4207F8D0E00ACBAA3 /* kickAction.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13C971F3207F8D0E00ACBAA3 /* kickAction.atlas */; };
@@ -23,6 +27,10 @@
 /* Begin PBXFileReference section */
 		13282FEF207B5F880033EBFA /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		13282FF9207B8FC60033EBFA /* manTexture.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = manTexture.atlas; sourceTree = "<group>"; };
+		133A8C44208E17C500750D41 /* MonsterSpecies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterSpecies.swift; sourceTree = "<group>"; };
+		133A8C46208E1A5500750D41 /* Man.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Man.swift; sourceTree = "<group>"; };
+		133A8C4A208E1D3200750D41 /* bloodBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = bloodBar.xib; sourceTree = "<group>"; };
+		133A8C4C208E1D4E00750D41 /* bloodBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bloodBar.swift; sourceTree = "<group>"; };
 		1345BC67208078BA00B3E62E /* cuteMonsterTexture.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = cuteMonsterTexture.atlas; sourceTree = "<group>"; };
 		13C971ED207F88F900ACBAA3 /* punchAction.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = punchAction.atlas; sourceTree = "<group>"; };
 		13C971F3207F8D0E00ACBAA3 /* kickAction.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = kickAction.atlas; sourceTree = "<group>"; };
@@ -47,6 +55,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		133A8C48208E1CDC00750D41 /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				171881551EB13FA300FC3077 /* GameScene.swift */,
+				133A8C46208E1A5500750D41 /* Man.swift */,
+				133A8C44208E17C500750D41 /* MonsterSpecies.swift */,
+				13282FEF207B5F880033EBFA /* GameData.swift */,
+			);
+			path = GameScene;
+			sourceTree = "<group>";
+		};
+		133A8C49208E1D0400750D41 /* Contoller */ = {
+			isa = PBXGroup;
+			children = (
+				171881571EB13FA300FC3077 /* GameViewController.swift */,
+				171881591EB13FA300FC3077 /* Main.storyboard */,
+			);
+			path = Contoller;
+			sourceTree = "<group>";
+		};
+		133A8C4E208E1D5800750D41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				133A8C4A208E1D3200750D41 /* bloodBar.xib */,
+				133A8C4C208E1D4E00750D41 /* bloodBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		171881431EB13FA300FC3077 = {
 			isa = PBXGroup;
 			children = (
@@ -73,10 +110,9 @@
 				13C971ED207F88F900ACBAA3 /* punchAction.atlas */,
 				13282FF9207B8FC60033EBFA /* manTexture.atlas */,
 				1718814F1EB13FA300FC3077 /* AppDelegate.swift */,
-				171881551EB13FA300FC3077 /* GameScene.swift */,
-				171881571EB13FA300FC3077 /* GameViewController.swift */,
-				171881591EB13FA300FC3077 /* Main.storyboard */,
-				13282FEF207B5F880033EBFA /* GameData.swift */,
+				133A8C4E208E1D5800750D41 /* View */,
+				133A8C48208E1CDC00750D41 /* GameScene */,
+				133A8C49208E1D0400750D41 /* Contoller */,
 				1718815C1EB13FA300FC3077 /* Assets.xcassets */,
 				1718815E1EB13FA300FC3077 /* LaunchScreen.storyboard */,
 				171881611EB13FA300FC3077 /* Info.plist */,
@@ -147,6 +183,7 @@
 			files = (
 				13282FFA207B8FC60033EBFA /* manTexture.atlas in Resources */,
 				13C971F4207F8D0E00ACBAA3 /* kickAction.atlas in Resources */,
+				133A8C4B208E1D3200750D41 /* bloodBar.xib in Resources */,
 				13C971EE207F88F900ACBAA3 /* punchAction.atlas in Resources */,
 				1345BC68208078BA00B3E62E /* cuteMonsterTexture.atlas in Resources */,
 				1718815B1EB13FA300FC3077 /* Main.storyboard in Resources */,
@@ -164,8 +201,11 @@
 			files = (
 				171881561EB13FA300FC3077 /* GameScene.swift in Sources */,
 				13282FF0207B5F880033EBFA /* GameData.swift in Sources */,
+				133A8C4D208E1D4E00750D41 /* bloodBar.swift in Sources */,
 				171881581EB13FA300FC3077 /* GameViewController.swift in Sources */,
 				171881501EB13FA300FC3077 /* AppDelegate.swift in Sources */,
+				133A8C47208E1A5500750D41 /* Man.swift in Sources */,
+				133A8C45208E17C500750D41 /* MonsterSpecies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
