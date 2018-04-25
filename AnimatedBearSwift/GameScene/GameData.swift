@@ -12,14 +12,14 @@ import UIKit
 struct ScenesData {
   //每个场景的元素
   static let resource:[[String:Any]] = [
-    ["background":"Background1-1",
-     "emeny":"toothBrush",
-      "emenyLevel":1],
+    ["background":"Background1-1" ],
     ["background":"Background1-2"],
     ["background":"Background2-1"],
     ["background":"Background2-2"],
     ["background":"Background3-1"],
     ["background":"Background3-2"],
+    ["background":"Background4-1"],
+    ["background":"Background4-2"]
   ]
   
   //获取元素
@@ -40,5 +40,6 @@ struct GameSetting {
   static let beingHitJumpDistance:CGFloat = 300
   static let beingHitJumpHeight:CGFloat = 900
 
+  static let levelName = ["紫色秘境","希望田野","绝望戈壁","决战黄昏"]
 }
 

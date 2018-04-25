@@ -57,7 +57,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rrv-5h-smJ">
-                                <rect key="frame" x="223.5" y="604.5" width="153.5" height="153.5"/>
+                                <rect key="frame" x="193.5" y="604.5" width="153.5" height="153.5"/>
                                 <state key="normal" image="right"/>
                                 <connections>
                                     <action selector="StopMan:" destination="BV1-FR-VrT" eventType="touchUpInside" id="2AJ-EU-mXH"/>
@@ -98,6 +98,12 @@
                                     <constraint firstAttribute="width" constant="400" id="j5z-t3-XXG"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" text="中二名称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfc-FG-Cuz">
+                                <rect key="frame" x="892.5" y="51.5" width="101.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -109,6 +115,7 @@
                             <constraint firstAttribute="trailing" secondItem="c3F-93-7CG" secondAttribute="trailing" id="Et5-D8-ceT"/>
                             <constraint firstItem="dQk-ky-iR5" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="16" id="M3c-oZ-Fym"/>
                             <constraint firstItem="dQk-ky-iR5" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" constant="12" id="Msc-aq-RvC"/>
+                            <constraint firstItem="Qfc-FG-Cuz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3se-qz-xqx" secondAttribute="leading" constant="20" symbolic="YES" id="QEa-Xd-jYK"/>
                             <constraint firstItem="JgG-P6-qaD" firstAttribute="leading" secondItem="tx7-fx-m6a" secondAttribute="trailing" id="a0b-ur-KkA"/>
                             <constraint firstItem="JgG-P6-qaD" firstAttribute="width" secondItem="c3F-93-7CG" secondAttribute="width" id="cup-s3-EFq"/>
                             <constraint firstItem="tx7-fx-m6a" firstAttribute="height" secondItem="JgG-P6-qaD" secondAttribute="height" id="e4E-1W-fh7"/>
@@ -116,22 +123,25 @@
                             <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="JgG-P6-qaD" secondAttribute="bottom" constant="90" id="kpM-9q-kge"/>
                             <constraint firstItem="tx7-fx-m6a" firstAttribute="width" secondItem="JgG-P6-qaD" secondAttribute="width" id="loc-Ls-jWE"/>
                             <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="9gR-mi-RaM" secondAttribute="bottom" constant="10" id="mI9-3C-HqC"/>
+                            <constraint firstItem="Qfc-FG-Cuz" firstAttribute="centerY" secondItem="YhN-3C-ZT1" secondAttribute="centerY" id="pe8-uB-AAm"/>
                             <constraint firstItem="c3F-93-7CG" firstAttribute="leading" secondItem="JgG-P6-qaD" secondAttribute="trailing" id="qVb-E9-tX5"/>
                             <constraint firstItem="P9e-3A-yvb" firstAttribute="leading" secondItem="dQk-ky-iR5" secondAttribute="trailing" constant="13" id="qZe-mp-dBZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Qfc-FG-Cuz" secondAttribute="trailing" constant="30" id="rdk-3t-Tw8"/>
                             <constraint firstItem="P9e-3A-yvb" firstAttribute="centerY" secondItem="dQk-ky-iR5" secondAttribute="centerY" id="rfB-zP-ewp"/>
-                            <constraint firstItem="Rrv-5h-smJ" firstAttribute="leading" secondItem="9gR-mi-RaM" secondAttribute="trailing" constant="60" id="w5w-Ea-6pb"/>
+                            <constraint firstItem="Rrv-5h-smJ" firstAttribute="leading" secondItem="9gR-mi-RaM" secondAttribute="trailing" constant="30" id="w5w-Ea-6pb"/>
                             <constraint firstItem="9gR-mi-RaM" firstAttribute="height" secondItem="3se-qz-xqx" secondAttribute="height" multiplier="0.2" id="xKj-ta-Bqo"/>
                             <constraint firstItem="c3F-93-7CG" firstAttribute="height" secondItem="3se-qz-xqx" secondAttribute="height" multiplier="0.12" id="xOf-Ap-Ym1"/>
                             <constraint firstItem="9gR-mi-RaM" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="10" id="xS4-L7-aZf"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="LevelName" destination="Qfc-FG-Cuz" id="unw-nK-cc3"/>
                         <outlet property="bloodBar" destination="P9e-3A-yvb" id="4am-yd-0so"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="233.78906249999997" y="102.34375"/>
+            <point key="canvasLocation" x="215" y="67"/>
         </scene>
     </scenes>
     <resources>

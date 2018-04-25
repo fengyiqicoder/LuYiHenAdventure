@@ -5,10 +5,20 @@ import SpriteKit
 
 class GameScene: SKScene {
   
-  var sceneNumber = 0
+  weak var viewControllerDelegate:ScenseDelegate!
+  
+  var sceneNumber = 0{
+    didSet{
+      let level = sceneNumber/2
+      let levelName = GameSetting.levelName[level]
+      viewControllerDelegate.changeLevelName(newName: levelName)
+    }
+  }
   var resourceDictionary:[String:Any] {
     return ScenesData.getResource(scenesNumber: sceneNumber)
   }
+  
+  
   
   private var man = SKSpriteNode()
   private var background = SKSpriteNode()
