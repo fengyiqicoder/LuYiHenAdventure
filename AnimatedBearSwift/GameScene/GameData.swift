@@ -36,9 +36,12 @@ struct GameSetting {
   static let manStartPointX:CGFloat =
     GameSetting.screenSize.width*0.3
   static let manStartPointY:CGFloat = GameSetting.screenSize.height*0.4
-  static let jumpHeight:CGFloat = 1900
+  static let jumpHeight:CGFloat = 2000
   static let beingHitJumpDistance:CGFloat = 300
   static let beingHitJumpHeight:CGFloat = 900
+  
+  static let punchDistance:CGFloat = 130
+  static let kickDistance:CGFloat = 140
 
   static let levelName = ["紫色秘境","希望田野","绝望戈壁","决战黄昏"]
 }

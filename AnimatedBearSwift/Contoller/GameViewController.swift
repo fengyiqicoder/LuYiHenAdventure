@@ -20,7 +20,7 @@ class GameViewController: UIViewController,ScenseDelegate {
       view.showsFPS = true
       view.showsNodeCount = true
       view.presentScene(scene)
-      bloodBar.blood = 78
+      bloodBar.blood = 100
       //获取关卡名称
       let name = GameSetting.levelName[0]
       LevelName.text = name
@@ -62,8 +62,13 @@ class GameViewController: UIViewController,ScenseDelegate {
     self.LevelName.text = newName
   }
   
+  func changeBloodBar(value: Int) {
+    bloodBar.blood = value
+  }
+  
 }
 
 protocol ScenseDelegate:class {
   func changeLevelName(newName:String)
+  func changeBloodBar(value:Int)
 }
