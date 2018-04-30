@@ -29,15 +29,7 @@ class Monster: SKSpriteNode {
       position.y = newValue
     }
   }
-  var showingFromRight:Bool!{
-    didSet{
-      if showingFromRight{
-        position.x = parent!.scene!.size.width + size.width
-      }else{
-        position.x = 0-size.width
-      }
-    }
-  }
+  var showingFromRight:Bool!
   
   //MARK:数值
   var hurt:Int!
@@ -68,11 +60,17 @@ class Monster: SKSpriteNode {
     self.init(texture: texture)
     self.textureArray = textureArray
     self.YPostion = yPosition
-    self.showingFromRight = showFromRight
     self.hurt = hurt
     self.moveSpeed = speed
     self.canBeHit = canBeHit
     self.zPosition = 2.0
+    
+    self.showingFromRight = showFromRight
+    if showingFromRight{
+      position.x = 1120
+    }else{
+      position.x = 0-size.width
+    }
   }
   
   override init(texture: SKTexture?, color: UIColor, size: CGSize) {

@@ -13,7 +13,7 @@ class GameScene: SKScene {
   }
   
   //MARK: 关卡控制
-  var maxSceneCanReach:Int = 1
+  var maxSceneCanReach:Int = 0
   var sceneNumber = 0{
     didSet{
       let level = sceneNumber/2
@@ -32,7 +32,8 @@ class GameScene: SKScene {
   private var punchingTextures:[SKTexture] = []
   
   //testing Monster
-  private var cuteMonster:Monster!
+  private var monsters:[Monster] = []
+  //cuteMonster
   private var cuteMonsterTextures:[SKTexture] = []
   
   //边缘
@@ -72,12 +73,12 @@ class GameScene: SKScene {
   override func didMove(to view: SKView) {
     backgroundColor = .blue
     let physicsBounds = CGMutablePath()
-    physicsBounds.addLines(between: [CGPoint(x:-2000,y:440),
-                                     CGPoint(x:2000,y:440)])
+    physicsBounds.addLines(between: [CGPoint(x:-500,y:440),
+                                     CGPoint(x:1400,y:440)])
     physicsBody = SKPhysicsBody(edgeChainFrom: physicsBounds)
     self.physicsWorld.gravity = CGVector(dx: 0, dy: -8.8)
     
-    //    print(frame)
+    print(rightMaxDistance)
     buildMan()
     buildMonster()
     loadBackground()
@@ -119,11 +120,17 @@ class GameScene: SKScene {
     loadTexture(folderName: "cuteMonsterTexture", imageName: "monster", textureArray: &cuteMonsterTextures)
     //创建怪物
     let firstFrameTexture = cuteMonsterTextures[0]
-    cuteMonster = Monster(texture: firstFrameTexture, textureArray: cuteMonsterTextures,
-                          yPosition: 240, showFromRight: false, hurt: 8, speed: 5.6, canBeHit: 3)
-    addChild(cuteMonster)
+    let newMonster = Monster(texture: firstFrameTexture, textureArray: cuteMonsterTextures,
+                             yPosition: 240, showFromRight: false, hurt: 8, speed: 5.6, canBeHit: 3)
+    let newMonster2 = Monster(texture: firstFrameTexture, textureArray: cuteMonsterTextures,
+                              yPosition: 240, showFromRight: true, hurt: 8, speed: 3, canBeHit: 3)
     //使用循环动画
-    cuteMonster.runAnimation()
+    newMonster.runAnimation()
+    newMonster2.runAnimation()
+    monsters.append(newMonster)
+    addChild(newMonster)
+    monsters.append(newMonster2)
+    addChild(newMonster2)
     
   }
   
@@ -182,30 +189,28 @@ class GameScene: SKScene {
   }
   
   func checkAttackAffect(punch:Bool){
-    if cuteMonster.parent == nil {
-      return
-    }
-    //物理判断（击打声音）
-    //效果判断
-    let faceToRight = man.xScale == 1
-    let hitDistance = punch ? GameSetting.punchDistance : GameSetting.kickDistance
-    let hitPointX = man.position.x+(faceToRight ? hitDistance : -hitDistance)
-    //单个monster判断 后续改为数组判断
-    let hitMoster = checkXDistanceBetween(hitX: hitPointX,
-                                          monsterLeft: cuteMonster.frame.minX, monsterRight: cuteMonster.frame.maxX)
     
-    if hitMoster {
-      //击中操作
-      let monsterInRight = man.position.x < cuteMonster.position.x
-      cuteMonster.position.x += monsterInRight ? 100 : -100
-      cuteMonster.canBeHit! -= 1
+    for monster in monsters {
+      if monster.isAlive {
+        //物理判断（击打声音）
+        
+        //效果判断
+        let faceToRight = man.xScale == 1
+        let hitDistance = punch ? GameSetting.punchDistance : GameSetting.kickDistance
+        let hitPointX = man.position.x+(faceToRight ? hitDistance : -hitDistance)
+        //单个monster判断
+        let hitMoster = checkXDistanceBetween(hitX: hitPointX,
+                                              monsterLeft: monster.frame.minX, monsterRight: monster.frame.maxX)
+        if hitMoster {
+          //击中操作
+          let monsterInRight = man.position.x < monster.position.x
+          monster.position.x += monsterInRight ? 100 : -100
+          monster.canBeHit! -= 1
+        }
+      }
     }
     
-    //    let punchPointView = UIView()
-    //    punchPointView.bounds.size = CGSize(width: 20, height: 20)
-    //    punchPointView.center = punchPoint
-    //    punchPointView.backgroundColor = UIColor.black
-    //    self.view?.addSubview(punchPointView)
+    
   }
   
   
@@ -240,21 +245,21 @@ class GameScene: SKScene {
     let position = man.position.x
     //边缘判断
     if position < leftMaxDistance {
-      //      if updateBackground(level: sceneNumber-1){
-      //        //更改背景
-      //        clearScreen()
-      //        loadBackground()
-      //        //更改角色
-      //        man.position.x = rightMaxDistance
-      //      }
+      if updateBackground(level: sceneNumber-1){
+        //更改背景
+        clearScreen()
+        loadBackground()
+        //更改角色
+        man.position.x = rightMaxDistance
+      }
       //在边界堵住
       if runingDirectionToRight == false{
         return
       }
     }
     
-    if position > rightMaxDistance , sceneNumber+1<=maxSceneCanReach{
-      if updateBackground(level: sceneNumber+1){
+    if position > rightMaxDistance {
+      if sceneNumber+1<=maxSceneCanReach,updateBackground(level: sceneNumber+1){
         //更改图像
         clearScreen()
         loadBackground()
@@ -286,34 +291,35 @@ class GameScene: SKScene {
   //MARK: - Monster code
   
   func updateMonster() {//抓人
-    if cuteMonster.parent == nil {
-      return
+//    let monsterMaxLeft = leftMaxDistance
+//    let monsterMaxRight = rightMaxDistance
+    for monster in monsters {
+      if monster.isAlive {
+        let inRightSide = man.position.x > monster.position.x
+        if inRightSide {
+          monster.xScale = 1
+          monster.position.x += monster.moveSpeed
+        }else{
+          monster.xScale = -1
+          monster.position.x -= monster.moveSpeed
+        }
+      }
     }
-    let inRightSide = man.position.x > cuteMonster.position.x
-    if inRightSide {
-      cuteMonster.xScale = 1
-      cuteMonster.position.x += cuteMonster.moveSpeed
-    }else{
-      cuteMonster.xScale = -1
-      cuteMonster.position.x -= cuteMonster.moveSpeed
-    }
-    //    print(man.position)
   }
   
   func checkCrash(){
     
-    if cuteMonster.parent == nil {
-      return
+    for monster in monsters {
+      if monster.isAlive {
+        let manFrame = man.frame.insetBy(dx: 40, dy: 0)
+        let monsterFrame = monster.frame.insetBy(dx: 40, dy: 0)
+        
+        if manFrame.intersects(monsterFrame) {
+          let monsterInRight = man.position.x < monster.position.x
+          man.beingHit(fromRight: monsterInRight, lossblood: monster.hurt)
+        }
+      }
     }
-    
-    let manFrame = man.frame.insetBy(dx: 40, dy: 0)
-    let monsterFrame = cuteMonster.frame.insetBy(dx: 40, dy: 0)
-    
-    if manFrame.intersects(monsterFrame) {
-      let monsterInRight = man.position.x < cuteMonster.position.x
-      man.beingHit(fromRight: monsterInRight, lossblood: 4)
-    }
-    
   }
   
   
@@ -335,6 +341,7 @@ class GameScene: SKScene {
     checkCrash()
     updateManPosition()
     updateMonster()
+    man.checkPostion()
   }
   
   //MARK: Tool Method

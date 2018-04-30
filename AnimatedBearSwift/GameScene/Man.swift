@@ -13,6 +13,26 @@ import SpriteKit
 class Man:SKSpriteNode  {
   
   weak var bloodBarDelegate:ScenseDelegate!
+  
+  var flying = false
+
+  func checkPostion() {
+    if position.x < -10 , !flying {
+      fly(fromLeft: true)
+      flying = true
+    } else if position.x > 1040 , !flying{
+      fly(fromLeft: false)
+      flying = true
+    }else{
+      flying = false
+    }
+  }
+
+
+  func fly(fromLeft:Bool)  {
+    let xDistance = fromLeft ? 1000 : -1000
+    super.physicsBody?.applyImpulse(CGVector(dx: xDistance, dy: 2000))
+  }
  
   //血量
   var blood:Int = 100{
@@ -38,6 +58,8 @@ class Man:SKSpriteNode  {
     //掉血
     self.blood -= lossblood
   }
+  
+  
   
   
   
