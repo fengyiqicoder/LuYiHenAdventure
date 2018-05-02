@@ -16,6 +16,7 @@ class GameScene: SKScene {
   var maxSceneCanReach:Int = 0
   var sceneNumber = 0{
     didSet{
+      //检查是否胜利
       let level = sceneNumber/2
       let levelName = GameSetting.levelName[level]
       viewControllerDelegate.changeLevelName(newName: levelName)
@@ -31,7 +32,8 @@ class GameScene: SKScene {
   private var kickingTextures:[SKTexture] = []
   private var punchingTextures:[SKTexture] = []
   
-  //testing Monster
+  // Monster
+  var monsterFaceToLeft:Bool!
   private var monsters:[Monster] = []
   //cuteMonster
   private var cuteMonsterTextures:[SKTexture] = []
@@ -86,6 +88,8 @@ class GameScene: SKScene {
   }
   
   func loadBackground() {
+    //隐藏提醒
+    viewControllerDelegate.hiddenNextSceneImage()
     //getBackgroundImageName
     let name = resourceDictionary["background"] as! String
     background = SKSpriteNode(imageNamed: name)
@@ -117,20 +121,28 @@ class GameScene: SKScene {
   }
   
   func buildMonster() {
-    loadTexture(folderName: "cuteMonsterTexture", imageName: "monster", textureArray: &cuteMonsterTextures)
-    //创建怪物
+    
+    let monstersSpecies = resourceDictionary["Mosters"] as! MonsterSpecies
+    loadTexture(folderName: monstersSpecies.textureName, imageName: monstersSpecies.imageName, textureArray: &cuteMonsterTextures)
     let firstFrameTexture = cuteMonsterTextures[0]
-    let newMonster = Monster(texture: firstFrameTexture, textureArray: cuteMonsterTextures,
-                             yPosition: 240, showFromRight: false, hurt: 8, speed: 5.6, canBeHit: 3)
-    let newMonster2 = Monster(texture: firstFrameTexture, textureArray: cuteMonsterTextures,
-                              yPosition: 240, showFromRight: true, hurt: 8, speed: 3, canBeHit: 3)
-    //使用循环动画
-    newMonster.runAnimation()
-    newMonster2.runAnimation()
-    monsters.append(newMonster)
-    addChild(newMonster)
-    monsters.append(newMonster2)
-    addChild(newMonster2)
+    
+    //朝向
+    monsterFaceToLeft = monstersSpecies.faceLeft
+    
+    for times in 1...monstersSpecies.amount {
+      //创建怪物
+      let newMonster = Monster(texture: firstFrameTexture, textureArray: cuteMonsterTextures,
+                               yPosition: monstersSpecies.Ypostion, showFromRight: times%2 == 0,
+                               hurt: monstersSpecies.hurt, speed: monstersSpecies.speed,
+                               canBeHit: monstersSpecies.canBeHit,
+                               animationTime:monstersSpecies.animationTime)
+      
+      //使用循环动画
+      newMonster.runAnimation()
+      addChild(newMonster)
+      //数组记录
+      monsters.append(newMonster)
+    }
     
   }
   
@@ -206,6 +218,8 @@ class GameScene: SKScene {
           let monsterInRight = man.position.x < monster.position.x
           monster.position.x += monsterInRight ? 100 : -100
           monster.canBeHit! -= 1
+          //检查界面
+          checkScenceNumber()
         }
       }
     }
@@ -240,18 +254,47 @@ class GameScene: SKScene {
     //    print("man size \(man.size)")
   }
   
+ 
+  
+  func stopMoving() {
+    if !isDoingAction {
+      cancelMove()
+    }
+  }
+  
+  //MARK: - Monster code
+  
+  
+  func checkCrash(){
+    
+    for monster in monsters {
+      if monster.isAlive {
+        let manFrame = man.frame.insetBy(dx: 40, dy: 0)
+        let monsterFrame = monster.frame.insetBy(dx: 40, dy: 0)
+        
+        if manFrame.intersects(monsterFrame) {
+          let monsterInRight = man.position.x < monster.position.x
+          man.beingHit(fromRight: monsterInRight, lossblood: monster.hurt)
+        }
+      }
+    }
+  }
+  
+  //MARK: - update code
+
+  
   func updateManPosition()  {
     if isDoingAction {return}
     let position = man.position.x
     //边缘判断
     if position < leftMaxDistance {
-      if updateBackground(level: sceneNumber-1){
-        //更改背景
-        clearScreen()
-        loadBackground()
-        //更改角色
-        man.position.x = rightMaxDistance
-      }
+//      if updateBackground(level: sceneNumber-1){
+//        //更改背景
+//        clearScreen()
+//        loadBackground()
+//        //更改角色
+//        man.position.x = rightMaxDistance
+//      }
       //在边界堵住
       if runingDirectionToRight == false{
         return
@@ -262,6 +305,8 @@ class GameScene: SKScene {
       if sceneNumber+1<=maxSceneCanReach,updateBackground(level: sceneNumber+1){
         //更改图像
         clearScreen()
+        //加载Monster
+        buildMonster()
         loadBackground()
         //更改角色
         man.position.x = leftMaxDistance
@@ -282,46 +327,38 @@ class GameScene: SKScene {
     }
   }
   
-  func stopMoving() {
-    if !isDoingAction {
-      cancelMove()
-    }
-  }
-  
-  //MARK: - Monster code
-  
   func updateMonster() {//抓人
-//    let monsterMaxLeft = leftMaxDistance
-//    let monsterMaxRight = rightMaxDistance
     for monster in monsters {
       if monster.isAlive {
         let inRightSide = man.position.x > monster.position.x
         if inRightSide {
-          monster.xScale = 1
+          monster.xScale = monsterFaceToLeft ? -1 : 1
           monster.position.x += monster.moveSpeed
         }else{
-          monster.xScale = -1
+          monster.xScale = monsterFaceToLeft ? 1 : -1
           monster.position.x -= monster.moveSpeed
         }
       }
     }
   }
   
-  func checkCrash(){
+  func checkScenceNumber() {
+    
+    var canMoveToNextScence = true
     
     for monster in monsters {
       if monster.isAlive {
-        let manFrame = man.frame.insetBy(dx: 40, dy: 0)
-        let monsterFrame = monster.frame.insetBy(dx: 40, dy: 0)
-        
-        if manFrame.intersects(monsterFrame) {
-          let monsterInRight = man.position.x < monster.position.x
-          man.beingHit(fromRight: monsterInRight, lossblood: monster.hurt)
-        }
+        canMoveToNextScence = false
       }
     }
+    
+    if canMoveToNextScence {
+      maxSceneCanReach += 1
+      //展示图标
+      viewControllerDelegate.showNextSceneImage()
+    }
+    
   }
-  
   
   //MARK: - clear code
   

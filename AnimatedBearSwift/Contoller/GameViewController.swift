@@ -8,6 +8,7 @@ class GameViewController: UIViewController,ScenseDelegate {
   
   @IBOutlet weak var bloodBar: bloodBar!
   @IBOutlet weak var LevelName: UILabel!
+  @IBOutlet weak var goToRighSceneImageView: UIImageView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -66,9 +67,19 @@ class GameViewController: UIViewController,ScenseDelegate {
     bloodBar.blood = value
   }
   
+  func showNextSceneImage() {
+    goToRighSceneImageView.isHidden = false
+  }
+  
+  func hiddenNextSceneImage() {
+    goToRighSceneImageView.isHidden = true
+  }
+  
 }
 
 protocol ScenseDelegate:class {
   func changeLevelName(newName:String)
   func changeBloodBar(value:Int)
+  func showNextSceneImage()
+  func hiddenNextSceneImage()
 }

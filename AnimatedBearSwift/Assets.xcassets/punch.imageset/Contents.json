@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "punch.png",
+      "filename" : "icons8-punching-filled-102.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "punch-1.png",
+      "filename" : "icons8-punching-filled-101.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "punch-2.png",
+      "filename" : "icons8-punching-filled-100.png",
       "scale" : "3x"
     }
   ],
