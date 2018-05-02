@@ -12,14 +12,46 @@ class GameViewController: UIViewController,ScenseDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    restartGame()
+//    if let view = view as? SKView {
+//      // Create the scene programmatically
+//      scene = GameScene(size: view.bounds.size)
+//      scene.viewControllerDelegate = self
+//      scene.scaleMode = .resizeFill
+//      view.ignoresSiblingOrder = true
+//      view.showsFPS = true
+//      view.showsNodeCount = true
+//      view.presentScene(scene)
+//      bloodBar.blood = 100
+//      //获取关卡名称
+//      let name = GameSetting.levelName[0]
+//      LevelName.text = name
+//    }
+  }
+  
+  @IBOutlet weak var gameRestartButton: UIButton!
+  @IBOutlet weak var gameWinningImageView: UIImageView!
+  @IBOutlet weak var gameOverImageView: UIImageView!
+  //游戏结束
+  func manDead(){
+    if let view = view as? SKView{
+      view.presentScene(nil)
+    }
+    gameRestartButton.isHidden = false
+    gameOverImageView.isHidden = false
+  }
+  
+  //关卡重启
+  @IBAction func restartGame() {
+    gameRestartButton.isHidden = true
+    gameOverImageView.isHidden = true
     if let view = view as? SKView {
-      // Create the scene programmatically
       scene = GameScene(size: view.bounds.size)
       scene.viewControllerDelegate = self
       scene.scaleMode = .resizeFill
       view.ignoresSiblingOrder = true
       view.showsFPS = true
-      view.showsNodeCount = true
+//      view.showsNodeCount = true
       view.presentScene(scene)
       bloodBar.blood = 100
       //获取关卡名称
@@ -27,6 +59,7 @@ class GameViewController: UIViewController,ScenseDelegate {
       LevelName.text = name
     }
   }
+  
   
   @IBAction func moveMan(_ sender: UIButton) {
 //    print("move")
@@ -75,6 +108,14 @@ class GameViewController: UIViewController,ScenseDelegate {
     goToRighSceneImageView.isHidden = true
   }
   
+  func winTheGame() {
+    //停止游戏运行
+    if let view = view as? SKView{
+      view.presentScene(nil)
+    }
+    gameWinningImageView.isHidden = false
+  }
+  
 }
 
 protocol ScenseDelegate:class {
@@ -82,4 +123,6 @@ protocol ScenseDelegate:class {
   func changeBloodBar(value:Int)
   func showNextSceneImage()
   func hiddenNextSceneImage()
+  func manDead()
+  func winTheGame()
 }

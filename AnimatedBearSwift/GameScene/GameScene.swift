@@ -16,7 +16,6 @@ class GameScene: SKScene {
   var maxSceneCanReach:Int = 0
   var sceneNumber = 0{
     didSet{
-      //检查是否胜利
       let level = sceneNumber/2
       let levelName = GameSetting.levelName[level]
       viewControllerDelegate.changeLevelName(newName: levelName)
@@ -162,6 +161,10 @@ class GameScene: SKScene {
   
   func updateBackground(level:Int) -> Bool {
     let maxLevel = ScenesData.resource.count-1
+    //检查是否通关
+    if level > maxLevel {
+      viewControllerDelegate.winTheGame()
+    }
     if 0 <= level&&level <= maxLevel {//在范围之内
       self.sceneNumber = level
       return true

@@ -40,6 +40,7 @@ class Man:SKSpriteNode  {
       if blood < 0 {
         //游戏结束
         blood = 0
+        bloodBarDelegate.manDead()
       }
       //更新血条
       bloodBarDelegate.changeBloodBar(value: blood)
@@ -54,6 +55,7 @@ class Man:SKSpriteNode  {
     
     let xImpuseValue = fromRight ? -GameSetting.beingHitJumpDistance : GameSetting.beingHitJumpDistance
     //animation
+    self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
     self.physicsBody?.applyImpulse(CGVector(dx: xImpuseValue, dy: GameSetting.beingHitJumpHeight))
     //掉血
     self.blood -= lossblood
