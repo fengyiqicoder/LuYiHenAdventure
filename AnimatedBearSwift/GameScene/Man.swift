@@ -13,6 +13,7 @@ import SpriteKit
 class Man:SKSpriteNode  {
   
   weak var bloodBarDelegate:ScenseDelegate!
+  weak var soundDelegate:SoundPlayDelegate!
   
   var flying = false
 
@@ -41,6 +42,9 @@ class Man:SKSpriteNode  {
         //游戏结束
         blood = 0
         bloodBarDelegate.manDead()
+        //声音
+        soundDelegate.stopBackGroundMusic()
+        run(SKAction.playSoundFileNamed("gameOver.wav", waitForCompletion: false))
       }
       //更新血条
       bloodBarDelegate.changeBloodBar(value: blood)
@@ -59,6 +63,8 @@ class Man:SKSpriteNode  {
     self.physicsBody?.applyImpulse(CGVector(dx: xImpuseValue, dy: GameSetting.beingHitJumpHeight))
     //掉血
     self.blood -= lossblood
+    //声音
+    run(SKAction.playSoundFileNamed("manGetHit.wav", waitForCompletion: false))
   }
   
   

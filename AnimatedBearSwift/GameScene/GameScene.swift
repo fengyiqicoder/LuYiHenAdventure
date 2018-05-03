@@ -3,7 +3,7 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene,SoundPlayDelegate {
   
   weak var viewControllerDelegate:ScenseDelegate!
   
@@ -30,6 +30,7 @@ class GameScene: SKScene {
   private var manWalkingFrames: [SKTexture] = []
   private var kickingTextures:[SKTexture] = []
   private var punchingTextures:[SKTexture] = []
+  private var backGroundMusic:SKAudioNode!
   
   // Monster
   var monsterFaceToLeft:Bool!
@@ -83,7 +84,7 @@ class GameScene: SKScene {
     buildMan()
     buildMonster()
     loadBackground()
-    
+    loadBackgroundMusic()
   }
   
   func loadBackground() {
@@ -107,6 +108,7 @@ class GameScene: SKScene {
     let firstFrameTexture = manWalkingFrames[0]
     man = Man(texture: firstFrameTexture)
     man.bloodBarDelegate = viewControllerDelegate
+    man.soundDelegate = self
     man.position = CGPoint(x: GameSetting.manStartPointX,
                            y: GameSetting.manStartPointY)
     //    man.size = GameSetting.manSize
@@ -144,6 +146,26 @@ class GameScene: SKScene {
     }
     
   }
+  //载入音乐
+  func loadBackgroundMusic() {
+    
+    if (sceneNumber+2)%2 == 0 {
+      //暂停音乐
+      let musicName = resourceDictionary["Music"] as! String
+      stopBackGroundMusic()
+      if let musicURL = Bundle.main.url(forResource: musicName, withExtension: "mp3"){//第一关
+        backGroundMusic = SKAudioNode(url: musicURL)
+        addChild(backGroundMusic)
+      }
+    }
+  }
+  
+  func stopBackGroundMusic() {
+    if let bgMusic = backGroundMusic{
+      bgMusic.run(SKAction.stop())
+      bgMusic.removeFromParent()
+    }
+  }
   
   //载入材质
   func loadTexture(folderName:String,imageName:String, textureArray:inout [SKTexture]){
@@ -163,6 +185,9 @@ class GameScene: SKScene {
     let maxLevel = ScenesData.resource.count-1
     //检查是否通关
     if level > maxLevel {
+      removeAction(forKey: "Music")
+      stopBackGroundMusic()
+      run(SKAction.playSoundFileNamed("gameWin.wav", waitForCompletion: false))
       viewControllerDelegate.winTheGame()
     }
     if 0 <= level&&level <= maxLevel {//在范围之内
@@ -221,6 +246,8 @@ class GameScene: SKScene {
           let monsterInRight = man.position.x < monster.position.x
           monster.position.x += monsterInRight ? 100 : -100
           monster.canBeHit! -= 1
+          //声音 有可能重复播放
+          run(SKAction.playSoundFileNamed("monsterGetHit.wav", waitForCompletion: false))
           //检查界面
           checkScenceNumber()
         }
@@ -311,6 +338,7 @@ class GameScene: SKScene {
         //加载Monster
         buildMonster()
         loadBackground()
+        loadBackgroundMusic()
         //更改角色
         man.position.x = leftMaxDistance
       }
@@ -394,4 +422,8 @@ class GameScene: SKScene {
     }
   }
   
+}
+
+protocol SoundPlayDelegate :class{
+  func stopBackGroundMusic()
 }

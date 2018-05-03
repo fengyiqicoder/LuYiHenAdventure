@@ -14,6 +14,14 @@
 		133A8C4B208E1D3200750D41 /* bloodBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133A8C4A208E1D3200750D41 /* bloodBar.xib */; };
 		133A8C4D208E1D4E00750D41 /* bloodBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133A8C4C208E1D4E00750D41 /* bloodBar.swift */; };
 		1345BC68208078BA00B3E62E /* cuteMonsterTexture.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1345BC67208078BA00B3E62E /* cuteMonsterTexture.atlas */; };
+		1395309D209AAB090016EEAB /* monsterGetHit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1395309C209AAB090016EEAB /* monsterGetHit.wav */; };
+		1395309F209AAB0E0016EEAB /* manGetHit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1395309E209AAB0E0016EEAB /* manGetHit.wav */; };
+		139530A1209AAC2C0016EEAB /* gameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = 139530A0209AAC2C0016EEAB /* gameOver.wav */; };
+		139530A3209AAE890016EEAB /* gameWin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 139530A2209AAE890016EEAB /* gameWin.wav */; };
+		139530A5209AB0E70016EEAB /* scene1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 139530A4209AB0E70016EEAB /* scene1.mp3 */; };
+		139530A7209AB0EB0016EEAB /* scene2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 139530A6209AB0EB0016EEAB /* scene2.mp3 */; };
+		139530A9209AB0F10016EEAB /* scene3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 139530A8209AB0F10016EEAB /* scene3.mp3 */; };
+		139530AB209AB0F60016EEAB /* scene4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 139530AA209AB0F60016EEAB /* scene4.mp3 */; };
 		13C6605B2099D3900024244A /* blueMonster.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13C6605A2099D3900024244A /* blueMonster.atlas */; };
 		13C6605E2099D51B0024244A /* boss.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13C6605D2099D51B0024244A /* boss.atlas */; };
 		13C660602099E0BF0024244A /* greenMonster.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13C6605F2099E0BF0024244A /* greenMonster.atlas */; };
@@ -35,6 +43,14 @@
 		133A8C4A208E1D3200750D41 /* bloodBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = bloodBar.xib; sourceTree = "<group>"; };
 		133A8C4C208E1D4E00750D41 /* bloodBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bloodBar.swift; sourceTree = "<group>"; };
 		1345BC67208078BA00B3E62E /* cuteMonsterTexture.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = cuteMonsterTexture.atlas; sourceTree = "<group>"; };
+		1395309C209AAB090016EEAB /* monsterGetHit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = monsterGetHit.wav; sourceTree = "<group>"; };
+		1395309E209AAB0E0016EEAB /* manGetHit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = manGetHit.wav; sourceTree = "<group>"; };
+		139530A0209AAC2C0016EEAB /* gameOver.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameOver.wav; sourceTree = "<group>"; };
+		139530A2209AAE890016EEAB /* gameWin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameWin.wav; sourceTree = "<group>"; };
+		139530A4209AB0E70016EEAB /* scene1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scene1.mp3; sourceTree = "<group>"; };
+		139530A6209AB0EB0016EEAB /* scene2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scene2.mp3; sourceTree = "<group>"; };
+		139530A8209AB0F10016EEAB /* scene3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scene3.mp3; sourceTree = "<group>"; };
+		139530AA209AB0F60016EEAB /* scene4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scene4.mp3; sourceTree = "<group>"; };
 		13C6605A2099D3900024244A /* blueMonster.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = blueMonster.atlas; sourceTree = "<group>"; };
 		13C6605D2099D51B0024244A /* boss.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = boss.atlas; sourceTree = "<group>"; };
 		13C6605F2099E0BF0024244A /* greenMonster.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = greenMonster.atlas; sourceTree = "<group>"; };
@@ -111,6 +127,14 @@
 		1718814E1EB13FA300FC3077 /* AnimatedBearSwift */ = {
 			isa = PBXGroup;
 			children = (
+				139530A4209AB0E70016EEAB /* scene1.mp3 */,
+				139530A6209AB0EB0016EEAB /* scene2.mp3 */,
+				139530A8209AB0F10016EEAB /* scene3.mp3 */,
+				139530AA209AB0F60016EEAB /* scene4.mp3 */,
+				139530A2209AAE890016EEAB /* gameWin.wav */,
+				139530A0209AAC2C0016EEAB /* gameOver.wav */,
+				1395309C209AAB090016EEAB /* monsterGetHit.wav */,
+				1395309E209AAB0E0016EEAB /* manGetHit.wav */,
 				13C6605F2099E0BF0024244A /* greenMonster.atlas */,
 				13C6605D2099D51B0024244A /* boss.atlas */,
 				13C6605A2099D3900024244A /* blueMonster.atlas */,
@@ -191,15 +215,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				13282FFA207B8FC60033EBFA /* manTexture.atlas in Resources */,
+				139530A9209AB0F10016EEAB /* scene3.mp3 in Resources */,
 				13C6605B2099D3900024244A /* blueMonster.atlas in Resources */,
 				13C971F4207F8D0E00ACBAA3 /* kickAction.atlas in Resources */,
 				133A8C4B208E1D3200750D41 /* bloodBar.xib in Resources */,
 				13C6605E2099D51B0024244A /* boss.atlas in Resources */,
+				1395309F209AAB0E0016EEAB /* manGetHit.wav in Resources */,
 				13C971EE207F88F900ACBAA3 /* punchAction.atlas in Resources */,
+				139530A5209AB0E70016EEAB /* scene1.mp3 in Resources */,
 				1345BC68208078BA00B3E62E /* cuteMonsterTexture.atlas in Resources */,
+				139530A7209AB0EB0016EEAB /* scene2.mp3 in Resources */,
+				139530AB209AB0F60016EEAB /* scene4.mp3 in Resources */,
 				1718815B1EB13FA300FC3077 /* Main.storyboard in Resources */,
 				13C660602099E0BF0024244A /* greenMonster.atlas in Resources */,
+				139530A1209AAC2C0016EEAB /* gameOver.wav in Resources */,
 				1718815D1EB13FA300FC3077 /* Assets.xcassets in Resources */,
+				1395309D209AAB090016EEAB /* monsterGetHit.wav in Resources */,
+				139530A3209AAE890016EEAB /* gameWin.wav in Resources */,
 				171881601EB13FA300FC3077 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,20 +13,6 @@ class GameViewController: UIViewController,ScenseDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     restartGame()
-//    if let view = view as? SKView {
-//      // Create the scene programmatically
-//      scene = GameScene(size: view.bounds.size)
-//      scene.viewControllerDelegate = self
-//      scene.scaleMode = .resizeFill
-//      view.ignoresSiblingOrder = true
-//      view.showsFPS = true
-//      view.showsNodeCount = true
-//      view.presentScene(scene)
-//      bloodBar.blood = 100
-//      //获取关卡名称
-//      let name = GameSetting.levelName[0]
-//      LevelName.text = name
-//    }
   }
   
   @IBOutlet weak var gameRestartButton: UIButton!
