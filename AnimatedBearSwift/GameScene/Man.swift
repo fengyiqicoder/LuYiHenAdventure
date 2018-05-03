@@ -41,10 +41,12 @@ class Man:SKSpriteNode  {
       if blood < 0 {
         //游戏结束
         blood = 0
-        bloodBarDelegate.manDead()
         //声音
         soundDelegate.stopBackGroundMusic()
         run(SKAction.playSoundFileNamed("gameOver.wav", waitForCompletion: false))
+        //界面出现
+        bloodBarDelegate.manDead()
+        
       }
       //更新血条
       bloodBarDelegate.changeBloodBar(value: blood)

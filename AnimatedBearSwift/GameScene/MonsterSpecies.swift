@@ -18,7 +18,7 @@ class MonsterSpecies {
   private var speedFloating:CGFloat
   var speed:CGFloat{//每次返回不同的速度
     let eachGearSpeed = speedFloating/4
-    let gear = CGFloat(arc4random_uniform(5))-2
+    let gear = CGFloat(arc4random_uniform(5))
     return eachGearSpeed*gear+moveSpeedAround
   }
   

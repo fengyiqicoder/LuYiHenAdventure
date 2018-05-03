@@ -229,7 +229,7 @@ class GameScene: SKScene,SoundPlayDelegate {
   }
   
   func checkAttackAffect(punch:Bool){
-    
+    var havePlaySound:Bool = false
     for monster in monsters {
       if monster.isAlive {
         //物理判断（击打声音）
@@ -246,8 +246,12 @@ class GameScene: SKScene,SoundPlayDelegate {
           let monsterInRight = man.position.x < monster.position.x
           monster.position.x += monsterInRight ? 100 : -100
           monster.canBeHit! -= 1
-          //声音 有可能重复播放
-          run(SKAction.playSoundFileNamed("monsterGetHit.wav", waitForCompletion: false))
+          //声音
+          if !havePlaySound {
+            print("hit music play")
+            monster.run(SKAction.playSoundFileNamed("monsterGetHit.wav", waitForCompletion: false))
+            havePlaySound = true
+          }
           //检查界面
           checkScenceNumber()
         }

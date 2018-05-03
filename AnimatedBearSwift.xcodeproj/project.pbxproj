@@ -14,9 +14,9 @@
 		133A8C4B208E1D3200750D41 /* bloodBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133A8C4A208E1D3200750D41 /* bloodBar.xib */; };
 		133A8C4D208E1D4E00750D41 /* bloodBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133A8C4C208E1D4E00750D41 /* bloodBar.swift */; };
 		1345BC68208078BA00B3E62E /* cuteMonsterTexture.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1345BC67208078BA00B3E62E /* cuteMonsterTexture.atlas */; };
+		13819687209B1658009BC895 /* gameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13819686209B1658009BC895 /* gameOver.wav */; };
 		1395309D209AAB090016EEAB /* monsterGetHit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1395309C209AAB090016EEAB /* monsterGetHit.wav */; };
 		1395309F209AAB0E0016EEAB /* manGetHit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1395309E209AAB0E0016EEAB /* manGetHit.wav */; };
-		139530A1209AAC2C0016EEAB /* gameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = 139530A0209AAC2C0016EEAB /* gameOver.wav */; };
 		139530A3209AAE890016EEAB /* gameWin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 139530A2209AAE890016EEAB /* gameWin.wav */; };
 		139530A5209AB0E70016EEAB /* scene1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 139530A4209AB0E70016EEAB /* scene1.mp3 */; };
 		139530A7209AB0EB0016EEAB /* scene2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 139530A6209AB0EB0016EEAB /* scene2.mp3 */; };
@@ -44,9 +44,9 @@
 		133A8C4A208E1D3200750D41 /* bloodBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = bloodBar.xib; sourceTree = "<group>"; };
 		133A8C4C208E1D4E00750D41 /* bloodBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bloodBar.swift; sourceTree = "<group>"; };
 		1345BC67208078BA00B3E62E /* cuteMonsterTexture.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = cuteMonsterTexture.atlas; sourceTree = "<group>"; };
+		13819686209B1658009BC895 /* gameOver.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameOver.wav; sourceTree = "<group>"; };
 		1395309C209AAB090016EEAB /* monsterGetHit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = monsterGetHit.wav; sourceTree = "<group>"; };
 		1395309E209AAB0E0016EEAB /* manGetHit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = manGetHit.wav; sourceTree = "<group>"; };
-		139530A0209AAC2C0016EEAB /* gameOver.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameOver.wav; sourceTree = "<group>"; };
 		139530A2209AAE890016EEAB /* gameWin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameWin.wav; sourceTree = "<group>"; };
 		139530A4209AB0E70016EEAB /* scene1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scene1.mp3; sourceTree = "<group>"; };
 		139530A6209AB0EB0016EEAB /* scene2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scene2.mp3; sourceTree = "<group>"; };
@@ -134,8 +134,8 @@
 				139530A6209AB0EB0016EEAB /* scene2.mp3 */,
 				139530A8209AB0F10016EEAB /* scene3.mp3 */,
 				139530AA209AB0F60016EEAB /* scene4.mp3 */,
+				13819686209B1658009BC895 /* gameOver.wav */,
 				139530A2209AAE890016EEAB /* gameWin.wav */,
-				139530A0209AAC2C0016EEAB /* gameOver.wav */,
 				1395309C209AAB090016EEAB /* monsterGetHit.wav */,
 				1395309E209AAB0E0016EEAB /* manGetHit.wav */,
 				13C6605F2099E0BF0024244A /* greenMonster.atlas */,
@@ -183,7 +183,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Ray Wenderlich";
 				TargetAttributes = {
 					1718814B1EB13FA300FC3077 = {
@@ -231,8 +231,8 @@
 				139530AD209AC03A0016EEAB /* gameStartVideo.mp4 in Resources */,
 				139530AB209AB0F60016EEAB /* scene4.mp3 in Resources */,
 				1718815B1EB13FA300FC3077 /* Main.storyboard in Resources */,
+				13819687209B1658009BC895 /* gameOver.wav in Resources */,
 				13C660602099E0BF0024244A /* greenMonster.atlas in Resources */,
-				139530A1209AAC2C0016EEAB /* gameOver.wav in Resources */,
 				1718815D1EB13FA300FC3077 /* Assets.xcassets in Resources */,
 				1395309D209AAB090016EEAB /* monsterGetHit.wav in Resources */,
 				139530A3209AAE890016EEAB /* gameWin.wav in Resources */,
@@ -293,6 +293,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -300,6 +301,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -326,7 +328,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -350,6 +352,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -357,6 +360,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -377,7 +381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

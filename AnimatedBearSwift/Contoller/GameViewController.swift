@@ -86,7 +86,7 @@ class GameViewController: UIViewController,ScenseDelegate {
       scene.scaleMode = .resizeFill
       view.ignoresSiblingOrder = true
       //完成之后进行更改
-      view.showsFPS = true
+//      view.showsFPS = true
       view.presentScene(scene)
       bloodBar.blood = 100
       //获取关卡名称
