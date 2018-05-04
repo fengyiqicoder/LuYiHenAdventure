@@ -22,12 +22,12 @@
 		139530A7209AB0EB0016EEAB /* scene2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 139530A6209AB0EB0016EEAB /* scene2.mp3 */; };
 		139530A9209AB0F10016EEAB /* scene3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 139530A8209AB0F10016EEAB /* scene3.mp3 */; };
 		139530AB209AB0F60016EEAB /* scene4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 139530AA209AB0F60016EEAB /* scene4.mp3 */; };
-		139530AD209AC03A0016EEAB /* gameStartVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 139530AC209AC03A0016EEAB /* gameStartVideo.mp4 */; };
 		13C6605B2099D3900024244A /* blueMonster.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13C6605A2099D3900024244A /* blueMonster.atlas */; };
 		13C6605E2099D51B0024244A /* boss.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13C6605D2099D51B0024244A /* boss.atlas */; };
 		13C660602099E0BF0024244A /* greenMonster.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13C6605F2099E0BF0024244A /* greenMonster.atlas */; };
 		13C971EE207F88F900ACBAA3 /* punchAction.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13C971ED207F88F900ACBAA3 /* punchAction.atlas */; };
 		13C971F4207F8D0E00ACBAA3 /* kickAction.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 13C971F3207F8D0E00ACBAA3 /* kickAction.atlas */; };
+		13E661BB209B591D0033F394 /* gameStartVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 13E661BA209B591D0033F394 /* gameStartVideo.mp4 */; };
 		171881501EB13FA300FC3077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1718814F1EB13FA300FC3077 /* AppDelegate.swift */; };
 		171881561EB13FA300FC3077 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171881551EB13FA300FC3077 /* GameScene.swift */; };
 		171881581EB13FA300FC3077 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171881571EB13FA300FC3077 /* GameViewController.swift */; };
@@ -52,12 +52,12 @@
 		139530A6209AB0EB0016EEAB /* scene2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scene2.mp3; sourceTree = "<group>"; };
 		139530A8209AB0F10016EEAB /* scene3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scene3.mp3; sourceTree = "<group>"; };
 		139530AA209AB0F60016EEAB /* scene4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scene4.mp3; sourceTree = "<group>"; };
-		139530AC209AC03A0016EEAB /* gameStartVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameStartVideo.mp4; sourceTree = "<group>"; };
 		13C6605A2099D3900024244A /* blueMonster.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = blueMonster.atlas; sourceTree = "<group>"; };
 		13C6605D2099D51B0024244A /* boss.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = boss.atlas; sourceTree = "<group>"; };
 		13C6605F2099E0BF0024244A /* greenMonster.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = greenMonster.atlas; sourceTree = "<group>"; };
 		13C971ED207F88F900ACBAA3 /* punchAction.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = punchAction.atlas; sourceTree = "<group>"; };
 		13C971F3207F8D0E00ACBAA3 /* kickAction.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = kickAction.atlas; sourceTree = "<group>"; };
+		13E661BA209B591D0033F394 /* gameStartVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameStartVideo.mp4; sourceTree = "<group>"; };
 		1718814C1EB13FA300FC3077 /* AnimatedBearSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedBearSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1718814F1EB13FA300FC3077 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		171881551EB13FA300FC3077 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		1718814E1EB13FA300FC3077 /* AnimatedBearSwift */ = {
 			isa = PBXGroup;
 			children = (
-				139530AC209AC03A0016EEAB /* gameStartVideo.mp4 */,
+				13E661BA209B591D0033F394 /* gameStartVideo.mp4 */,
 				139530A4209AB0E70016EEAB /* scene1.mp3 */,
 				139530A6209AB0EB0016EEAB /* scene2.mp3 */,
 				139530A8209AB0F10016EEAB /* scene3.mp3 */,
@@ -228,8 +228,8 @@
 				139530A5209AB0E70016EEAB /* scene1.mp3 in Resources */,
 				1345BC68208078BA00B3E62E /* cuteMonsterTexture.atlas in Resources */,
 				139530A7209AB0EB0016EEAB /* scene2.mp3 in Resources */,
-				139530AD209AC03A0016EEAB /* gameStartVideo.mp4 in Resources */,
 				139530AB209AB0F60016EEAB /* scene4.mp3 in Resources */,
+				13E661BB209B591D0033F394 /* gameStartVideo.mp4 in Resources */,
 				1718815B1EB13FA300FC3077 /* Main.storyboard in Resources */,
 				13819687209B1658009BC895 /* gameOver.wav in Resources */,
 				13C660602099E0BF0024244A /* greenMonster.atlas in Resources */,
