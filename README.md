@@ -10,3 +10,5 @@
   <br>
 冯奕琦
 ----
+
+<img src=https://github.com/FinchFeng/LuYiHenAdventure/blob/master/AnimatedBearSwift/manTexture.atlas/walk3.png width="86" height="174" alt="图片加载失败时，显示这段字"/>
